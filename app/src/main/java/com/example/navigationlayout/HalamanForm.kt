@@ -55,7 +55,7 @@ fun HalamanForm(
         Row {
             Button(onClick = { onSubmitButtonClicked(listData) }) {
                 Text(text = stringResource(id = R.string.btn_submit))
-                Button(onClick = { onSubmitButtonClicked }) {
+                Button(onClick = { onBackButtonClicked }) {
                     Text(text = stringResource(id = R.string.btn_back))
                 }
             }
