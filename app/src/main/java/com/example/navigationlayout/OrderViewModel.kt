@@ -32,6 +32,16 @@ class OrderViewModel : ViewModel() {
         _stateUI.value = OrderUIState()
     }
 
+    fun seContact(listContact: MutableList<String>){
+        _stateUI.update { stateSaatini ->
+            stateSaatini.copy(
+                nama = listContact[0],
+                noTelp = listContact[1],
+                alamat = listContact[2]
+            )
+        }
+    }
+
     @RequiresApi(Build.VERSION_CODES.N)
     private fun hitungHarga(
         jumlah: Int = _stateUI.value.jumlah,
