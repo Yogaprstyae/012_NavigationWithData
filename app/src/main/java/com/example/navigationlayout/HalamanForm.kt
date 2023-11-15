@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,21 +43,40 @@ fun HalamanForm(
             value = nama,
             onValueChange = {nama = it},
             label = { Text(text = "Nama") })
+        Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
             value = noTelp,
             onValueChange = {noTelp = it},
             label = { Text(text = "noTelp") })
+        Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
             value = alamat,
             onValueChange = {alamat = it},
             label = { Text(text = "Alamat") })
         Spacer(modifier = Modifier.padding(16.dp))
-        Row {
-            Button(onClick = { onSubmitButtonClicked }) {
-                Text(text = stringResource(id = R.string.btn_submit))
-                Button(onClick = { onBackButtonClicked }) {
-                    Text(text = stringResource(id = R.string.btn_back))
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween)
+        {
+            Button(
+                modifier = Modifier.padding(10.dp),
+                onClick = {
+                    onBackButtonClicked
                 }
+            ) {
+                Text(text = stringResource(R.string.btn_back),
+                    fontSize = 16.sp
+                )
+            }
+            Button(
+                modifier = Modifier.padding(10.dp),
+                onClick = { onSubmitButtonClicked }
+            ) {
+                Text(
+                    text = stringResource(R.string.btn_submit),
+                    fontSize = 16.sp
+                )
             }
         }
     }
