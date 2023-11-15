@@ -4,6 +4,7 @@
 package com.example.navigationlayout
 
 import android.os.Build
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -32,7 +33,8 @@ import com.example.navigationlayout.data.SumberData.flavors
 enum class PengelolaHalaman {
     Home,
     Rasa,
-    Summary
+    Summary,
+    Form
 }
 
 @Composable
@@ -87,7 +89,14 @@ fun EsSusuApp(
             {
                 HalamanHome(
                     onNextButtonClicked = {
-                        navController.navigate(PengelolaHalaman.Rasa.name) })
+                        navController.navigate(PengelolaHalaman.Form.name) })
+            }
+            composable(route = PengelolaHalaman.Form.name){
+                HalamanForm(onSubmitButtonClicked = {
+                    viewModel.seContact(it)
+                    navController.navigate(PengelolaHalaman.Rasa.name)
+                }) {
+                }
             }
             composable(route =PengelolaHalaman.Rasa.name) {
                 val context = LocalContext.current
