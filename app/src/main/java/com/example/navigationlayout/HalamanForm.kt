@@ -30,7 +30,6 @@ fun HalamanForm(
     var nama by remember { mutableStateOf("") }
     var noTelp by remember { mutableStateOf("") }
     var alamat by remember { mutableStateOf("") }
-    var listData: MutableList<String> = mutableListOf(nama, noTelp, alamat)
 
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -53,7 +52,7 @@ fun HalamanForm(
             label = { Text(text = "Alamat") })
         Spacer(modifier = Modifier.padding(16.dp))
         Row {
-            Button(onClick = { onSubmitButtonClicked(listData) }) {
+            Button(onClick = { onSubmitButtonClicked }) {
                 Text(text = stringResource(id = R.string.btn_submit))
                 Button(onClick = { onBackButtonClicked }) {
                     Text(text = stringResource(id = R.string.btn_back))
