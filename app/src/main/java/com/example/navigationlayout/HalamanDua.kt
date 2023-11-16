@@ -47,6 +47,13 @@ fun HalamanDua (
             Column(
                 modifier = Modifier.padding(12.dp)
             ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center,
+                ){
+                    Text(text = "Your Order", fontWeight = FontWeight.Bold)
+                }
+                Spacer(modifier = Modifier.padding(12.dp))
                 Row( 
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(20.dp)
@@ -73,16 +80,7 @@ fun HalamanDua (
                     Text(text = orderUIState.alamat)
                 }
                 Divider()
-                Spacer(modifier = Modifier.padding(16.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center,
-                ){
-                    Text(text = "Your Order", fontWeight = FontWeight.Bold,
-                        modifier = Modifier.border(BorderStroke(2.dp, Color.LightGray))
-                            .padding(12.dp)
-                    )
-                }
+                Spacer(modifier = Modifier.padding(12.dp))
             }
             items.forEach { item ->
                 Column {
