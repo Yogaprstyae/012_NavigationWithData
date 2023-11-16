@@ -95,8 +95,7 @@ fun EsSusuApp(
                 HalamanForm(onSubmitButtonClicked = {
                     viewModel.seContact(it)
                     navController.navigate(PengelolaHalaman.Rasa.name)
-                }) {
-                }
+                }, onCancelButtonClicked = {navController.navigate(PengelolaHalaman.Home.name)})
             }
             composable(route =PengelolaHalaman.Rasa.name) {
                 val context = LocalContext.current
