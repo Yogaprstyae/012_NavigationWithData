@@ -1,5 +1,7 @@
 package com.example.navigationlayout
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,9 +16,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import com.example.navigationlayout.data.OrderUIState
 import com.example.navigationlayout.ui.theme.komponen.FormatLabelHarga
 
@@ -29,9 +33,6 @@ fun HalamanDua (
     val items = listOf(
         Pair(stringResource(R.string.quantity), orderUIState.jumlah),
         Pair(stringResource(R.string.flavor), orderUIState.rasa),
-        Pair(stringResource(R.string.flavor), orderUIState.nama),
-        Pair(stringResource(R.string.flavor), orderUIState.noTelp),
-        Pair(stringResource(R.string.flavor), orderUIState.alamat)
     )
     Column(
         modifier = modifier,
@@ -43,6 +44,46 @@ fun HalamanDua (
             verticalArrangement =
             Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
         ) {
+            Column(
+                modifier = Modifier.padding(12.dp)
+            ) {
+                Row( 
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(20.dp)
+                ){
+                    Text(stringResource(id = R.string.nama))
+                    Text(text = orderUIState.nama)
+                }
+                Divider()
+                Spacer(modifier = Modifier.padding(16.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(20.dp)
+                ){
+                    Text(stringResource(id = R.string.no_telp))
+                    Text(text = orderUIState.noTelp)
+                }
+                Divider()
+                Spacer(modifier = Modifier.padding(16.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(20.dp)
+                ){
+                    Text(stringResource(id = R.string.alamat))
+                    Text(text = orderUIState.alamat)
+                }
+                Divider()
+                Spacer(modifier = Modifier.padding(16.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center,
+                ){
+                    Text(text = "Your Order", fontWeight = FontWeight.Bold,
+                        modifier = Modifier.border(BorderStroke(2.dp, Color.LightGray))
+                            .padding(12.dp)
+                    )
+                }
+            }
             items.forEach { item ->
                 Column {
                     Text(item.first.uppercase())
