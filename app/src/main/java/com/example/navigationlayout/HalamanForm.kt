@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -26,11 +27,12 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun HalamanForm(
     onSubmitButtonClicked: (MutableList<String>) -> Unit,
-    onBackButtonClicked : () -> Unit
+    onCancelButtonClicked : () -> Unit
 ){
     var nama by remember { mutableStateOf("") }
     var noTelp by remember { mutableStateOf("") }
     var alamat by remember { mutableStateOf("") }
+    var listData : MutableList<String> = mutableListOf(nama,noTelp,alamat)
 
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -55,28 +57,15 @@ fun HalamanForm(
             label = { Text(text = "Alamat") })
         Spacer(modifier = Modifier.padding(16.dp))
         Row(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween)
-        {
-            Button(
-                modifier = Modifier.padding(10.dp),
-                onClick = {
-                    onBackButtonClicked
-                }
-            ) {
-                Text(text = stringResource(R.string.btn_back),
-                    fontSize = 16.sp
-                )
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ){
+            Button(onClick = onCancelButtonClicked) {
+                Text(text = "Back")
             }
-            Button(
-                modifier = Modifier.padding(10.dp),
-                onClick = { onSubmitButtonClicked }
-            ) {
-                Text(
-                    text = stringResource(R.string.btn_submit),
-                    fontSize = 16.sp
-                )
+            Button(onClick = { onSubmitButtonClicked(listData) }, enabled = nama.isNotEmpty()) {
+                Text(stringResource(id = R.string.btn_submit))
             }
         }
     }
