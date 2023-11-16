@@ -62,7 +62,7 @@ fun HalamanForm(
             horizontalArrangement = Arrangement.SpaceEvenly
         ){
             Button(onClick = onCancelButtonClicked) {
-                Text(text = "Back")
+                Text(text = "Cancel")
             }
             Button(onClick = { onSubmitButtonClicked(listData) }, enabled = nama.isNotEmpty()) {
                 Text(stringResource(id = R.string.btn_submit))
